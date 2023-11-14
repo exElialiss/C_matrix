@@ -4,7 +4,9 @@ int s21_create_matrix(int rows, int columns, matrix_t *result) {
   int err = OK;
   if (rows <= 0 || columns <= 0 || result == NULL) {
     if (result != NULL) {
-      matrix_null(result);
+      result->matrix = NULL;
+      result->rows = 0;
+      result->columns = 0;
     }
     err = INVALID_MATRIX;
   } else {
@@ -17,7 +19,9 @@ int s21_create_matrix(int rows, int columns, matrix_t *result) {
           free(matrix[j]);
         }
         free(matrix);
-        matrix_null(result);
+        result->matrix = NULL;
+        result->rows = 0;
+        result->columns = 0;
         err = CALCULATION_ERROR;
         break;
       }
