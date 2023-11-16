@@ -6,8 +6,7 @@ int s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
     err = INVALID_MATRIX;
   } else if (A->rows < 1 || A->columns < 1 || B->rows < 1 || B->columns < 1) {
     err = INVALID_MATRIX;
-  } else if (A->rows != B->rows || A->columns != B->columns ||
-             A->rows != result->rows || A->columns != result->columns) {
+  } else if (A->rows != B->rows || A->columns != B->columns) {
     err = CALCULATION_ERROR;
   } else {
     s21_create_matrix(A->rows, A->columns, result);

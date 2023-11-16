@@ -58,20 +58,6 @@ START_TEST(test_sub_matrix_invalid_B) {
   s21_remove_matrix(&result);
 }
 
-START_TEST(test_sub_matrix) {
-  matrix_t A, B, result;
-  s21_create_matrix(2, 2, &A);
-  s21_create_matrix(2, 2, &B);
-  s21_create_matrix(1, 1, &result);
-
-  int r = s21_sub_matrix(&A, &B, &result);
-  ck_assert_int_eq(r, 2);
-
-  s21_remove_matrix(&A);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&result);
-}
-
 START_TEST(test_sub_matrix_diff_sizes) {
   matrix_t A, B, result;
   s21_create_matrix(2, 2, &A);
@@ -107,7 +93,6 @@ Suite *sub_matrix_suite(void) {
   tcase_add_test(tc, test_sub_matrix_valid);
   tcase_add_test(tc, test_sub_matrix_invalid_A);
   tcase_add_test(tc, test_sub_matrix_invalid_B);
-  tcase_add_test(tc, test_sub_matrix);
   tcase_add_test(tc, test_sub_matrix_diff_sizes);
   tcase_add_loop_test(tc, test_sub_matrix_empty_matrix, 1, 10);
 
